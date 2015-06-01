@@ -1,5 +1,5 @@
 # source("http://bioconductor.org/biocLite.R")
-# biocLite(c("GEOQuery", "affy", "limma"))
+# biocLite(c("GEOquery", "affy", "limma"))
 library(GEOquery)
 
 getGEOSuppFiles("GSE10940", baseDir = "./GEO_datasets/")
