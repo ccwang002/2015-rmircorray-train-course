@@ -59,4 +59,88 @@ as.integer(gender)  # convert factor into integers
 ```
 
 
+## Vector indexing
+
+```{r}
+my_vec <- (1:5) ^ 2
+all.equal(seq_along(my_vec), seq_len(length(my_vec)))
+names(my_vec)  <- c("one", "four", "nine", "sixteen", "twentyfive")
+my_vec[1:2]
+my_vec[-c(3, 5)]
+my_vec[c("one", "four", "sixteen")]
+```
+
+```{r}
+my_vec <- (1:10) ^ 2
+my_vec[my_vec < 10]
+my_vec[my_vec > 15 & my_vec < 30]
+```
+
+
+# Function and Control Flow
+Not going to use much today.
+
+```{r}
+my_magic_salary_booster <- function(income) {
+    loser_level <- income < 22e3
+    income[loser_level] <- income[loser_level] * 2
+    winner_level <- !loser_level  # loser_level is a logical vector
+    income[winner_level] <- income[winner_level] ^ 2
+    
+    income   # last evaluated value being returned
+}
+
+society_minature_income <- c(4e3, 8e3, 15e3, 5e4, 10e4)
+names(society_minature_income) <- c("arbeit", "master", "NSC", "professor", "boss")
+my_magic_salary_booster(society_minature_income)
+```
+
+
+# List and Data Frame
+
+## List
+```{r}
+(mylist <- list(a = 1:10, b = c("a", "b", "c"), 1:10 < 4))
+mylist[[1]]
+mylist$a
+names(mylist)
+```
+
+## Data Frame
+```{r}
+my_calendar <- data.frame(
+    month = month.abb, 
+    date = c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31),
+    stringsAsFactors = FALSE
+)
+my_calendar$month %in% c("Feb", "May")
+my_calendar[1:2, ]
+my_calendar[my_calendar$date > 30, c("month")]
+```
+
+To access the general info about a data frame
+
+```{r}
+row.names(my_calendar)
+colnames(my_calendar)
+dim(my_calendar)
+c(nrow(my_calendar), ncol(my_calendar))
+```
+
+
+`with` expose col names of data frame as variables
+
+```{r}
+with(my_calendar, date[month %in% c("May", "Jun", "Aug")])
+```
+
+There are many built-in data frames.
+
+```{r}
+head(iris)
+iris[iris$Sepal.Width > 4, ]
+```
+
+
+
 
