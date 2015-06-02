@@ -38,7 +38,7 @@ fData(eset) <- probe_tab[, c("Gene Title", "Gene Symbol", "ENTREZ_GENE_ID", "Ref
 
 # View the probe expression normalization result
 boxplot(cel_data)
-boxplot(exprs(est))
+boxplot(exprs(eset))
 # # For MAplot see the following code snippet
 # MAplot(cel_data[, 5:8], pairs = TRUE, plot.method = "smoothScatter")
 
