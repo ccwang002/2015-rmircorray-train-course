@@ -1,7 +1,7 @@
 library(reshape2)
 library(ggplot2)
 
-df.ntu <- read.csv('play_data_process/NTU_B02new_sexratio.csv')
+df.ntu <- read.csv('./tutorials/NTU_B02new_sexratio.csv')
 colnames(df.ntu) <- c("disp", "total", "male", "female", "ratio")
 
 # 只取一部份的資料
