@@ -48,5 +48,8 @@ cleaned_pheno_df <- dplyr::transmute(
 design <- model.matrix(~ sample_group + tissue, data = cleaned_pheno_df)
 fit <- lmFit(est, design)  # fit each probeset to model
 efit <- eBayes(fit)        # empirical Bayes adjustment
-topTable(efit, coef = c("sample_groupLogjam"), n = 20)      # table of differentially expressed probesets
+top_de_probes <- topTable(efit, coef = c("sample_groupLogjam"), n = 20)      # table of differentially expressed probesets
 
+
+fit2 <- treat(fit, lfc=0.1)
+topTreat(fit2, coef=2)
